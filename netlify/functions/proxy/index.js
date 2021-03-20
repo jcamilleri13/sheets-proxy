@@ -1,7 +1,10 @@
+const querystring = require('querystring')
+
 exports.handler = async function(event, context) {
-  console.log(event.queryStringParameters.redirect)
+  const Location = querystring.unescape(event.queryStringParameters.redirect)
+
   return {
     statusCode: 302,
-    headers: { Location: event.queryStringParameters.redirect }
+    headers: { Location }
   }
 }
